@@ -8,7 +8,7 @@ canvas.height = 900;
 
 const frameCount = 120;
 const currentFrame = index => (
-  `imgs/crater-scale-4-${(index + 1).toString()}.jpg`
+  `imgs/crater-scale-4-${(frameCount-index).toString()}.jpg`
 );
 
 
