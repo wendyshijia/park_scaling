@@ -3,18 +3,17 @@ console.clear();
 const canvas = document.getElementById("hero-lightpass");
 const context = canvas.getContext("2d");
 
-canvas.width = 1158;
-canvas.height = 770;
+canvas.width = 1800;
+canvas.height = 900;
 
-const frameCount = 150;
+const frameCount = 120;
 const currentFrame = index => (
-  // `https://www.apple.com/105/media/us/airpods-pro/2019/1299e2f5_9206_4470_b28e_08307a42f19b/anim/sequence/large/01-hero-lightpass/${(index + 1).toString().padStart(4, '0')}.jpg`
-  `imgs/crater-scale-1-${(index + 1).toString()}.png`
+  `imgs/crater-scale-4-${(index + 1).toString()}.jpg`
 );
 
 
 const images = []
-const airpods = {
+const sequencer = {
   frame: 0
 };
 
@@ -24,7 +23,7 @@ for (let i = 0; i < frameCount; i++) {
   images.push(img);
 }
 
-gsap.to(airpods, {
+gsap.to(sequencer, {
   frame: frameCount - 1,
   snap: "frame",
   ease: "none",
@@ -34,9 +33,9 @@ gsap.to(airpods, {
   onUpdate: render // use animation onUpdate instead of scrollTrigger's onUpdate
 });
 
-images[0].onload = render;
+images[80].onload = render;
 
 function render() {
   context.clearRect(0, 0, canvas.width, canvas.height);
-  context.drawImage(images[airpods.frame], 0, 0); 
+  context.drawImage(images[sequencer.frame], 0, 0); 
 }
