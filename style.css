@@ -12,6 +12,6 @@ canvas {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  max-width: 160vw;
+  max-width: 180vw;
   max-height: 100vh;
 }
