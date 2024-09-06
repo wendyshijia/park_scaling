@@ -17,16 +17,26 @@ canvas {
 }
 button {
   width: 100px;
-  height: 50px;
+  height: 100px;
   color: black;
   border: 1px solid white;
   border-radius: 10px;
   background-color: transparent;
   cursor: pointer;
   font-size: 1.2em;
+  line-height: 1.2em;
+
+}
+button span{
+  display: block;
+  font-size: 0.8em;
+  margin-top:-1em;
 }
 button.at-target-scroll, button:hover{
   background-color: rgba(255, 255, 255, 0.6);
+}
+button.at-target-scroll span{
+  visibility: hidden;
 }
 #scroll-button{
   position: fixed;
