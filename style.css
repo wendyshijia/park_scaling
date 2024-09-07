@@ -5,10 +5,12 @@ html {
 body {
   height: 4000px;
   background: #d8d3d0;
+  overflow-x: hidden;
 }
 
 canvas {
   position: fixed;
+  /* position: relative; */
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);

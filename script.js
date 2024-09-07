@@ -10,8 +10,10 @@ canvas.width = 1800;
 canvas.height = 900;
 
 const frameCount = 120;
+const targetCount = 47;
+
 const currentFrame = index => (
-  `imgs/crater-scale-4-${(frameCount-index).toString()}.jpg`
+  `imgs/tinified/crater-scale-5-reverse-${(index+1).toString()}.jpg`
 );
 
 const images = []
@@ -19,48 +21,20 @@ const sequencer = {
   frame: 0
 };
 
+let startFrame;
+
 for (let i = 0; i < frameCount; i++) {
   const img = new Image();
   img.src = currentFrame(i);
   images.push(img);
 }
 
-images[119].onload = render;
+images[40].onload = render;
 
 function render() {
   context.clearRect(0, 0, canvas.width, canvas.height);
   context.drawImage(images[sequencer.frame], 0, 0); 
 }
-
-// button.addEventListener('click', function() {
-//   console.log(window.innerHeight)
-//   gsap.to(window, {
-//     duration: 1,
-//     scrollTo: { y: targetY, autoKill: false },
-//     ease: "power2.inOut"
-//   });
-// });
-// button.addEventListener('touchstart', function() {
-//   gsap.to(window, {
-//     duration: 1,
-//     scrollTo: { y: targetY, autoKill: false },
-//     ease: "power2.inOut"
-//   });
-// });
-
-// ScrollTrigger.create({
-//   start: 0,
-//   end: "max",
-//   onUpdate: (self) => {
-//     const scrollY = Math.round(self.scroll()); // Round to nearest integer
-    
-//     if (scrollY > 323 && scrollY < 327) {
-//       button.classList.add('at-target-scroll');
-//     } else {
-//       button.classList.remove('at-target-scroll');
-//     }
-//   }
-// });
 
 
 gsap.to(sequencer, {
@@ -71,4 +45,13 @@ gsap.to(sequencer, {
     scrub: 0.5
   },
   onUpdate: render // use animation onUpdate instead of scrollTrigger's onUpdate
+ 
 });
+// button.addEventListener('click', () => {
+//   console.log(document.body.scrollHeight)
+//   // let scrollPosition = (targetCount - 1) / (frameCount - 1) * document.body.scrollHeight;
+//   // console.log(scrollPosition)
+//   gsap.to(window, { scrollTo: document.body.scrollHeight/2, duration: 1 });
+
+
+// });
