@@ -3,12 +3,15 @@ console.clear();
 const canvas = document.getElementById("hero-lightpass");
 const context = canvas.getContext("2d");
 const button = document.getElementById("scroll-button");
+const label = document.getElementById("label");
 
 canvas.width = 1800;
 canvas.height = 900;
 
 const frameCount = 120;
 const buttonTarget = 60;
+const startScale = 2;
+const endScale = 8;
 
 const currentFrame = index => (
   `imgs/tinified/crater-scale-5-reverse-${(index+1).toString()}.jpg`
@@ -44,12 +47,15 @@ const scrollAnimation = gsap.to(sequencer, {
     onUpdate: (self) => {
       scrollProgress = self.progress;
       updateFrame();
+      let currentScale =  (startScale + (endScale - startScale) * scrollProgress).toFixed(1)
+      console.log(currentScale)
+      label.textContent = `A ${currentScale}×${currentScale}-mile section of Crater Lake National Park`;
     }
   },
 });
 
 function updateFrame() {
-  sequencer.frame = Math.round(scrollProgress * (frameCount - 1));
+  sequencer.frame = scrollProgress * (frameCount - 1);
   render();
 }
 
