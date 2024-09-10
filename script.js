@@ -49,7 +49,7 @@ const scrollAnimation = gsap.to(sequencer, {
       updateFrame();
       let currentScale =  (startScale + (endScale - startScale) * scrollProgress).toFixed(1)
       console.log(currentScale)
-      label.textContent = `A ${currentScale}×${currentScale}-mile section of Crater Lake National Park`;
+      label.textContent = `${currentScale}×${currentScale}`;
     }
   },
 });
